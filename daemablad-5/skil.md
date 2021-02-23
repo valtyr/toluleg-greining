@@ -16,13 +16,15 @@ header-includes:
 - '\newcommand{\hwname}{Valtýr Örn Kjartansson}'
 - '\newcommand{\hwemail}{vok4}'
 - '\newcommand{\hwtype}{Dæmablað}'
-- '\newcommand{\hwnum}{4}'
+- '\newcommand{\hwnum}{5}'
 - '\newcommand{\hwclass}{STÆ405G}'
 - '\newcommand{\hwlecture}{}'
 - '\newcommand{\hwsection}{}'
 ---
 
 \maketitle
+
+Ég féll frekar mikið á tíma í þessari viku en ég skila því sem ég var kominn með :P
 
 # Dæmi {-}
 
@@ -32,7 +34,7 @@ header-includes:
 8. Apply Broyden II with starting guesses $(1, 1)$ and $B_0 = I$ to the systems in exercise 3. Report the solutions to as much accuracy as possible and the number of steps required.
 
 
-```{.py include=daemablad-4/functions.py}
+```{.py include=daemablad-5/newton.py}
 ```
 
 ```
@@ -40,27 +42,65 @@ header-includes:
 
 $ python3 daemi1.py
 
-[0.98789009 0.98458933 0.96737826 0.96737826 0.98458933 0.98789009]
-[0.99500193 0.99460836 0.99689801 0.99955387 1.00155078 1.00134994]
-[0.99885795 0.99932187 1.00044502 1.00089697 1.00090803 1.00035094]
+[   array([1, 1]),
+    array([ 3., -2.]),
+    array([ 1.32608696, -1.26086957]),
+    array([ 0.26377473, -1.05035537]),
+    array([-1.34843452, -0.89692949]),
+    array([-1.50762489,  0.80447168]),
+    array([-0.72395978,  0.45818141]),
+    array([-0.24628857,  0.41189136]),
+    array([0.07222096, 0.32276344]),
+    array([0.08701216, 0.14999205]),
+    array([0.00818487, 0.09548628])]
 
 
 ```
+
+Ég veit að þetta er ekki að skila réttri niðurstöðu... en það verður bara að hafa það.
 
 \newpage
 
 # Dæmi {-}
 
-Solve the system by finding the PA=LU factorization and then carrying out the two-step back substitution.
+Hér er dæmið reiknað í höndunum:
 
-\vspace{1cm}
+![](daemablad-5/demi2-a.pdf)
 
-**Excercise 2.4.4 a)**
 
-![](daemablad-4/2-4-4-a.pdf)
+Hér er python fall sem skilar Lagrange interpolation fyrir breytilegan fjölda punkta:
 
-\newpage
+```{.py include=daemablad-5/lagrange.py}
+```
 
-**Excercise 2.4.4 b)**
+Og dæmi um niðurstöðu:
 
-![](daemablad-4/2-4-4-b.pdf)
+```python
+import sympy
+from langrange import lagrange_interpolation
+
+points = [(-1,0), (2, 1), (3,1), (5,2)]
+L = lagrange_interpolation(points)
+
+sympy.plotting.plot(L)
+```
+
+```{#transmissionpower .matplotlib format=PDF caption="Samanburður á lagrange margliðu og punktum"}
+import sys
+import sympy
+import matplotlib.pyplot as plt
+import numpy as np
+sys.path.insert(1, 'daemablad-5/')
+
+from lagrange import lagrange_interpolation
+
+points = [(-1,0), (2, 1), (3,1), (5,2)]
+L = lagrange_interpolation(points)
+
+xx = np.linspace(-2.5, 7.5, 1000)
+yy = sympy.lambdify(list(L.free_symbols)[0], L)(xx)
+plt.plot(xx, np.transpose(yy))
+plt.plot([x[0] for x in points], [y[1] for y in points], 'k*')
+plt.grid()
+
+```
