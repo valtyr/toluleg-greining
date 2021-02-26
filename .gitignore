@@ -1,2 +1,5 @@
 venv
 skil.pdf
+.DS_Store
+.__pycache__
+plots/*
