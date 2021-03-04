@@ -220,3 +220,7 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 % -----------------------------------------------------------------------------
+
+
+\newcommand{\answerheader}[1]{%
+  \vspace{1cm} \textbf{\emph{#1}} \vspace{0.5cm}}
