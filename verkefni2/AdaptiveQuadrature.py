@@ -9,7 +9,7 @@ def pairwise(iterable):
     return zip(a, b)
 
 
-def adaptive_quad_length(points, f, tolerance=0.0000001):
+def adaptive_quad_length(points, f, tolerance=0.005):
     def s(a, b):
         return (b - a) * ((f(a) + f(b)) / 2)
 
@@ -34,7 +34,9 @@ def adaptive_quad_length(points, f, tolerance=0.0000001):
     )
 
 
-def adaptive_quad_length_T(T, f, tolerance=0.0000001):
+def adaptive_quad_length_T(
+    T, f, tolerance=0.005, simpson=False
+):
     def s(a, b):
         return (b - a) * ((f(a) + f(b)) / 2)
 
@@ -45,9 +47,14 @@ def adaptive_quad_length_T(T, f, tolerance=0.0000001):
         s_ac = s(a, c)
         s_cb = s(c, b)
 
-        if s_ab - s_ac - s_cb < 3 * tolerance * (
-            (b - a) / (b_orig - a_orig)
-        ):
+        criterion = (
+            np.abs(s_ab - (s_ac + s_cb)) < 10 * tolerance
+            if simpson
+            else s_ab - s_ac - s_cb
+            < 3 * tolerance * ((b - a) / (b_orig - a_orig))
+        )
+
+        if criterion:
             return s_ac + s_cb
         else:
             return quad(a, c, a_orig, b_orig) + quad(
