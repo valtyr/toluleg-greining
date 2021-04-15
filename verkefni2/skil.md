@@ -67,7 +67,7 @@ if __name__ == "__main__":
 
 ```
 
-(Fallið f er skilgreint í `Definitions.py`).
+(Fallið f er skilgreint í [`Definitions.py`](https://github.com/valtyr/toluleg-greining/blob/master/verkefni2/Definitions.py)).
 
 ```
 $ python3 AdaptiveQuadrature.py
@@ -302,7 +302,7 @@ Use animation commands to demonstrate traveling along the path, first at the ori
 \answerheader{Svar:}
 
 Ég notaði hið frábæra kóðasafn Manim frá 3Blue1Brown til þess að búa til hreyfimyndirnar.
-Kóðann á bak við dæmið má finna í Balls klasa `Animation.py` skjalsins.
+Kóðann á bak við dæmið má finna í Balls klasa [`Animation.py`](https://github.com/valtyr/toluleg-greining/blob/8f1a67f95a8336982f743bd172b7d31dffc97152/verkefni2/Animation.py#L63) skjalsins.
 
 Hér má finna hreyfimyndina: [https://youtu.be/zXql5pZieag](https://youtu.be/zXql5pZieag).
 
@@ -315,7 +315,7 @@ Experiment with equipartitioning a path of your choice. Build a design, initial,
 \answerheader{Svar:}
 
 Ég valdi Bezier ferilinn sem er skilgreindur út frá punktunum
-$(0, 0)$, $(2, 2)$, $(-1, 2)$, og $(1, 0)$. Kóðann fá finna í klasanum MyBalls í `ValtyrAnimation.py`.
+$(0, 0)$, $(2, 2)$, $(-1, 2)$, og $(1, 0)$. Kóðann fá finna í klasanum MyBalls í [`ValtyrAnimation.py`](https://github.com/valtyr/toluleg-greining/blob/8f1a67f95a8336982f743bd172b7d31dffc97152/verkefni2/ValtyrAnimation.py#L55).
 
 Hér má finna hreyfimyndina: [https://youtu.be/rIlYoyvWUgg](https://youtu.be/rIlYoyvWUgg).
 
@@ -366,8 +366,16 @@ class TimingFunctions:
 
 ```
 
-Allan kóða hreyfimyndarinnar má finna í klasanum `TimingFunctionsScene` í `Animation.py` skjalinu.
+Allan kóða hreyfimyndarinnar má finna í klasanum `TimingFunctionsScene` í [`Animation.py`](https://github.com/valtyr/toluleg-greining/blob/8f1a67f95a8336982f743bd172b7d31dffc97152/verkefni2/Animation.py#L132) skjalinu.
 
 Í eftirfarandi myndbandi má sjá niðurstöðuna fyrir hvert fall: [https://youtu.be/YL2z40-pVb8](https://youtu.be/YL2z40-pVb8)
 
 \newpage
+
+---
+
+## Annað
+
+Valtýr Örn Kjartansson xxx
+
+Allan kóða sem tilheyrir þessu verkefni má finna á slóðinni: [https://github.com/valtyr/toluleg-greining/tree/master/verkefni2](https://github.com/valtyr/toluleg-greining/tree/master/verkefni2)

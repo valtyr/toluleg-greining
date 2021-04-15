@@ -67,6 +67,5 @@ def adaptive_quad_length_T(
 if __name__ == "__main__":
     from Definitions import f
 
-    # points = [0, 1 / 4, 1 / 2, 3 / 4]
     length = adaptive_quad_length_T(1, f)
     print(length)
